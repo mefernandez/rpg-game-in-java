@@ -33,7 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
 	public void run() {
 		// GAME LOOP
 		while (gameThread != null) {
-			
+			// Esto es un comentario de Leo
 		}
 	}
 
