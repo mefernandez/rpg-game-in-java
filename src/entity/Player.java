@@ -38,8 +38,8 @@ public class Player extends Entity {
 			this.down2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
 			this.left1 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
 			this.left2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.right1 = ImageIO.read(getClass().getResourceAsStream("/player/pixel.png"));
-			this.right2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
+			this.right1 = ImageIO.read(getClass().getResourceAsStream("/player/pixelright1.png"));
+			this.right2 = ImageIO.read(getClass().getResourceAsStream("/player/pixel1or2right.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
