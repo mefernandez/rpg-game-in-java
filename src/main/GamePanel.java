@@ -69,7 +69,6 @@ public class GamePanel extends JPanel implements Runnable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
->>>>>>> branch 'main' of https://github.com/mefernandez/rpg-game-in-java.git
 		}
 	}
 	
