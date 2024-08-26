@@ -1,4 +1,4 @@
-package entity;
+package org.example.rpg;
 
 import java.awt.image.BufferedImage;
 
