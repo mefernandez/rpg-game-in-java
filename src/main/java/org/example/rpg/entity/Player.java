@@ -1,10 +1,13 @@
-package org.example.rpg;
+package org.example.rpg.entity;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import org.example.rpg.GamePanel;
+import org.example.rpg.KeyHandler;
 
 public class Player extends Entity {
 
