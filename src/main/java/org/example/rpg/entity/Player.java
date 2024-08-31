@@ -13,18 +13,23 @@ public class Player extends Entity {
 
 	GamePanel gp;
 	KeyHandler kh;
+	
+	public final int screenX;
+	public final int screenY;
+	
 	public Player(GamePanel gp, KeyHandler kh) {
 		super();
 		this.gp = gp;
 		this.kh = kh;
-		
+		this.screenX = gp.screenWidth / 2 - (gp.tileSize/2);
+		this.screenY = gp.screenHeight / 2 - (gp.tileSize/2);
 		setDefaultValues();
 		getPlayerImage();
 	}
 	
 	public void setDefaultValues() {
-		this.x = 100;
-		this.y = 100;
+		this.worldX = gp.tileSize * 23;
+		this.worldY = gp.tileSize * 21;
 		this.speed = 4;
 		this.direction = "down";
 	}
@@ -49,19 +54,19 @@ public class Player extends Entity {
 	public void update() {
 		if (this.kh.upPressed == true) {
 			this.direction = "up";
-			this.y -= this.speed;
+			this.worldY -= this.speed;
 			
 		} else if (this.kh.downPressed == true) {
 			this.direction = "down";
-			this.y += this.speed;
+			this.worldY += this.speed;
 			
 		} else if (this.kh.leftPressed == true) {
 			this.direction = "left";
-			this.x -= this.speed;
+			this.worldX -= this.speed;
 			
 		} else if (this.kh.rightPressed == true) {
 			this.direction = "right";
-			this.x += this.speed;			
+			this.worldX += this.speed;			
 		}
 		this.spriteCounter++;
 		if (this.spriteCounter > 10) {
@@ -116,7 +121,7 @@ public class Player extends Entity {
 			throw new IllegalArgumentException("Unexpected value: " + this.direction);
 		}
 		
-		g2.drawImage(image, this.x, this.y, gp.tileSize, gp.tileSize, null);
+		g2.drawImage(image, this.screenX, this.screenY, gp.tileSize, gp.tileSize, null);
 		
 	}
 }
