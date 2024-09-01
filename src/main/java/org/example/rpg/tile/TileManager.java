@@ -50,7 +50,7 @@ public class TileManager {
 			BufferedReader br = new BufferedReader(new InputStreamReader(is));
 			int col = 0;
 			int row = 0;
-			while (col < gp.maxWorldCol && row < gp.maxWorldRow) {
+			while (row < gp.maxWorldRow) {
 				String line = br.readLine();
 				String numbers[] = line.split(" ");
 				while (col < gp.maxWorldCol) {
@@ -58,10 +58,8 @@ public class TileManager {
 					mapTileNum[col][row] = num;
 					col++;
 				}
-				if (col == gp.maxWorldCol) {
-					col = 0;
-					row++;
-				}
+				col = 0;
+				row++;
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -86,7 +84,7 @@ public class TileManager {
 			
 			g2.drawImage(tile[tileNum].image, screenX, screenY, gp.tileSize, gp.tileSize, null);
 			worldCol++;
-			if (worldCol == gp.maxScreenCol) {
+			if (worldCol == gp.maxWorldCol) {
 				worldCol = 0;
 				worldRow++;
 			}
