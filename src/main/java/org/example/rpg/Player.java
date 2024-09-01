@@ -29,14 +29,14 @@ public class Player extends Entity {
 	public void getPlayerImage() {
 		
 		try {
-			this.up1 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.up2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.down1 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.down2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.left1 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.left2 = ImageIO.read(getClass().getResourceAsStream("/player/yo.png"));
-			this.right1 = ImageIO.read(getClass().getResourceAsStream("/player/pixelright1.png"));
-			this.right2 = ImageIO.read(getClass().getResourceAsStream("/player/pixel1or2right.png"));
+			this.up1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-up-1.png"));
+			this.up2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-up-2.png"));
+			this.down1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-down-1.png"));
+			this.down2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-down-2.png"));
+			this.left1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-left-1.png"));
+			this.left2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-left-2.png"));
+			this.right1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-right-1.png"));
+			this.right2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-right-2.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
