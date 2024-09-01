@@ -48,10 +48,13 @@ public class Player extends Entity {
 			this.up0 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-stand-up.png"));
 			this.up1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-up-1.png"));
 			this.up2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-up-2.png"));
+			this.down0 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-stand-down.png"));
 			this.down1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-down-1.png"));
 			this.down2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-down-2.png"));
+			this.left0 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-stand-left.png"));
 			this.left1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-left-1.png"));
 			this.left2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-left-2.png"));
+			this.right0 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-stand-right.png"));
 			this.right1 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-right-1.png"));
 			this.right2 = ImageIO.read(getClass().getResourceAsStream("/player/bobble-right-2.png"));
 		} catch (IOException e) {
