@@ -116,6 +116,9 @@ public class Player extends Entity {
 		BufferedImage image = null;
 		switch (this.direction) {
 		case "up":
+			if (this.spriteNum == 0) {
+				image = up0;
+			}
 			if (this.spriteNum == 1) {
 				image = up1;
 			}
@@ -124,6 +127,9 @@ public class Player extends Entity {
 			}
 			break;
 		case "down":
+			if (this.spriteNum == 0) {
+				image = down0;
+			}
 			if (this.spriteNum == 1) {
 				image = down1;
 			}
@@ -132,6 +138,9 @@ public class Player extends Entity {
 			}
 			break;
 		case "left":
+			if (this.spriteNum == 0) {
+				image = left0;
+			}
 			if (this.spriteNum == 1) {
 				image = left1;
 			}
@@ -140,6 +149,9 @@ public class Player extends Entity {
 			}
 			break;
 		case "right":
+			if (this.spriteNum == 0) {
+				image = right0;
+			}
 			if (this.spriteNum == 1) {
 				image = right1;
 			}
