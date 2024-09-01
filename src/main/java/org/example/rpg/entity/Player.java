@@ -72,6 +72,7 @@ public class Player extends Entity {
 		} else if (this.kh.rightPressed == true) {
 			this.direction = "right";
 		} else {
+			this.spriteNum = 0;
 			return;
 		}
 		
