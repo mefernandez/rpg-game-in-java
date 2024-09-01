@@ -1,6 +1,7 @@
 package org.example.rpg.entity;
 
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -23,6 +24,13 @@ public class Player extends Entity {
 		this.kh = kh;
 		this.screenX = gp.screenWidth / 2 - (gp.tileSize/2);
 		this.screenY = gp.screenHeight / 2 - (gp.tileSize/2);
+		
+		solidArea = new Rectangle();
+		solidArea.x = 8;
+		solidArea.y = 16;
+		solidArea.width = 32;
+		solidArea.height = 32;
+		
 		setDefaultValues();
 		getPlayerImage();
 	}
@@ -54,20 +62,40 @@ public class Player extends Entity {
 	public void update() {
 		if (this.kh.upPressed == true) {
 			this.direction = "up";
-			this.worldY -= this.speed;
-			
 		} else if (this.kh.downPressed == true) {
 			this.direction = "down";
-			this.worldY += this.speed;
 			
 		} else if (this.kh.leftPressed == true) {
 			this.direction = "left";
-			this.worldX -= this.speed;
 			
 		} else if (this.kh.rightPressed == true) {
 			this.direction = "right";
-			this.worldX += this.speed;			
+		} else {
+			return;
 		}
+		
+		// CHECK TILE COLLISION
+		collisionOn = false;
+		gp.cChecker.checkTile(this);
+		
+		// IF COLLISION IS FALSE, PLAYER CAN MOVE
+		if (collisionOn == false) {
+			switch(direction) {
+			case "up":
+				this.worldY -= this.speed;
+				break;
+			case "down":
+				this.worldY += this.speed;
+				break;
+			case "left":
+				this.worldX -= this.speed;
+				break;
+			case "right":
+				this.worldX += this.speed;			
+				break;
+			}
+		}
+		
 		this.spriteCounter++;
 		if (this.spriteCounter > 10) {
 			if (this.spriteNum == 1) {
