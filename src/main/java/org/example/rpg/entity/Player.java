@@ -68,13 +68,12 @@ public class Player extends Entity {
 			this.direction = "up";
 		} else if (this.kh.downPressed == true) {
 			this.direction = "down";
-			
 		} else if (this.kh.leftPressed == true) {
 			this.direction = "left";
-			
 		} else if (this.kh.rightPressed == true) {
 			this.direction = "right";
 		} else {
+			this.spriteCounter = 10;
 			this.spriteNum = 0;
 			return;
 		}
@@ -103,7 +102,9 @@ public class Player extends Entity {
 		
 		this.spriteCounter++;
 		if (this.spriteCounter > 10) {
-			if (this.spriteNum == 1) {
+			if (this.spriteNum == 0) {
+				this.spriteNum = 1;
+			} else if (this.spriteNum == 1) {
 				this.spriteNum = 2;
 			} else if (this.spriteNum == 2) {
 				this.spriteNum = 1;
