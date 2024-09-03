@@ -15,6 +15,7 @@ public class DoorObject extends SuperObject {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.collision = true;
 	}
 
 }
