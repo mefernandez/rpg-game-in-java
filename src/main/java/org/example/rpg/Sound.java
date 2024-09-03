@@ -14,6 +14,8 @@ public class Sound {
 	public Sound() {
 		super();
 		this.soundURL[0] = getClass().getResource("/sound/BlueBoyAdventure.wav");
+		// Así se comenta una línea de código para que no se ejecute
+//		this.soundURL[0] = getClass().getResource("/sound/musica-de-javier.wav");
 		this.soundURL[1] = getClass().getResource("/sound/coin.wav");
 		this.soundURL[2] = getClass().getResource("/sound/powerup.wav");
 		this.soundURL[3] = getClass().getResource("/sound/unlock.wav");
