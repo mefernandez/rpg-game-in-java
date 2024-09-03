@@ -125,6 +125,7 @@ public class Player extends Entity {
 			String objName = gp.obj[i].name;
 			switch (objName) {
 			case "Key":
+				gp.playSoundEffect(1);
 				this.hasKey++;
 				// DELETE THE TOUCHED OBJECT
 				gp.obj[i] = null;
@@ -132,12 +133,18 @@ public class Player extends Entity {
 				break;
 			case "Door":
 				if (this.hasKey > 0) {
+					gp.playSoundEffect(3);
 					// DELETE THE TOUCHED OBJECT
 					gp.obj[i] = null;
 					this.hasKey--;
 					System.out.println("Keys left: " + this.hasKey);
 				}
 				break;
+			case "Boots":
+				gp.playSoundEffect(2);
+				// Move player faster with Boots
+				this.speed += 2;
+				gp.obj[i] = null;
 			}
 		}
 	}

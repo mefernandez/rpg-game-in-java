@@ -1,5 +1,6 @@
 package org.example.rpg;
 
+import org.example.rpg.object.BootsObject;
 import org.example.rpg.object.ChestObject;
 import org.example.rpg.object.DoorObject;
 import org.example.rpg.object.KeyObject;
@@ -42,5 +43,8 @@ public class AssetSetter {
 		gp.obj[6].worldX = 10 * gp.tileSize;
 		gp.obj[6].worldY = 7 * gp.tileSize;
 
+		gp.obj[7] = new BootsObject();
+		gp.obj[7].worldX = 37 * gp.tileSize;
+		gp.obj[7].worldY = 42 * gp.tileSize;
 	}
 }

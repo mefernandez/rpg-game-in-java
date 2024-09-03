@@ -37,12 +37,14 @@ public class GamePanel extends JPanel implements Runnable {
 	// WORLD SETTINGS
 	public final int maxWorldCol = 50;
 	public final int maxWorldRow = 50;
-	public final int worldWidth = tileSize * maxWorldCol;
-	public final int worldHeight = tileSize * maxWorldRow;
+//	public final int worldWidth = tileSize * maxWorldCol;
+//	public final int worldHeight = tileSize * maxWorldRow;
 	
 	int fps = 60;
 	
 	TileManager tileM = new TileManager(this);
+	
+	Sound sound = new Sound();
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -54,6 +56,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	public void setupGame() {
 		aSetter.setObject();
+		this.playMusic(0);
 	}
 	
 	public void startGameThread() {
@@ -111,6 +114,21 @@ public class GamePanel extends JPanel implements Runnable {
 		player.draw(g2);
 		
 		g2.dispose();
+	}
+	
+	public void playMusic(int i) {
+		this.sound.setFile(i);
+		this.sound.play();
+		this.sound.loop();
+	}
+	
+	public void stopMusic() {
+		this.sound.stop();
+	}
+	
+	public void playSoundEffect(int i) {
+		this.sound.setFile(i);
+		this.sound.play();		
 	}
 
 }
