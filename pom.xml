@@ -9,13 +9,34 @@
 
   <name>rpg</name>
   <url>https://github.com/mefernandez/rpg-game-in-java</url>
+  <description>RPG 2D Game in Java</description>
+  <inceptionYear>2021</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <app.main.class>com.acme.Main</app.main.class>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <app.distribution.directory>${project.build.directory}/distributions/app</app.distribution.directory>
   </properties>
+
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://spdx.org/licenses/Apache-2.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <developers>
+    <developer>
+      <id>duke</id>
+      <name>Java Duke</name>
+    </developer>
+  </developers>
 
   <dependencies>
     <dependency>
@@ -25,6 +46,126 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+ 
+<profiles>
+	<profile>
+	<id>release</id>
+<build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.6.0</version>
+        <configuration>
+          <mainClass>${app.main.class}</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>${app.main.class}</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>appassembler-maven-plugin</artifactId>
+        <version>2.1.0</version>
+        <configuration>
+          <assembleDirectory>${project.build.directory}/binary</assembleDirectory>
+          <repositoryLayout>flat</repositoryLayout>
+          <repositoryName>lib</repositoryName>
+          <programs>
+            <program>
+              <mainClass>${app.main.class}</mainClass>
+              <id>app</id>
+            </program>
+          </programs>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-distribution</id>
+            <phase>package</phase>
+            <goals>
+              <goal>assemble</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.2.0</version>
+        <configuration>
+          <attach>false</attach>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>src/main/assembly/assembly.xml</descriptor>
+          </descriptors>
+          <outputDirectory>${app.distribution.directory}</outputDirectory>
+          <workDirectory>${project.build.directory}/assembly/work</workDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <id>make-distribution</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.jreleaser</groupId>
+        <artifactId>jreleaser-maven-plugin</artifactId>
+        <version>1.14.0</version>
+        <inherited>false</inherited>
+        <configuration>
+          <jreleaser>
+            <project>
+              <java>
+                <mainClass>${app.main.class}</mainClass>
+              </java>
+            </project>
+            <release>
+              <github>
+                <owner>duke</owner>
+                <overwrite>true</overwrite>
+              </github>
+            </release>
+            <distributions>
+              <app>
+                <artifacts>
+                  <artifact>
+                    <path>
+                      ${app.distribution.directory}/${project.artifactId}-${project.version}.zip
+                    </path>
+                  </artifact>
+                  <artifact>
+                    <path>
+                      ${app.distribution.directory}/${project.artifactId}-${project.version}.tar.gz
+                    </path>
+                  </artifact>
+                </artifacts>
+              </app>
+            </distributions>
+          </jreleaser>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  </profile>
+</profiles>
 
   <build>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
