@@ -1,5 +1,6 @@
 package org.example.rpg.entity;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -19,6 +20,7 @@ public class Player extends Entity {
 	public final int screenY;
 	// how many keys the player has
 	public int hasKey = 0;
+	public boolean showHitBox = false;
 	
 	public Player(GamePanel gp, KeyHandler kh) {
 		super();
@@ -68,6 +70,12 @@ public class Player extends Entity {
 	}
 	
 	public void update() {
+		if (this.kh.hitBoxPressed) {
+			this.showHitBox = !this.showHitBox;
+			this.kh.hitBoxPressed = false;
+			return;
+		} 
+		
 		if (this.kh.upPressed == true) {
 			this.direction = "up";
 		} else if (this.kh.downPressed == true) {
@@ -213,6 +221,10 @@ public class Player extends Entity {
 		}
 		
 		g2.drawImage(image, this.screenX, this.screenY, gp.tileSize, gp.tileSize, null);
+		if (this.showHitBox) {
+			g2.setColor(Color.BLUE);
+			g2.drawRect(this.screenX + this.solidArea.x, this.screenY + this.solidArea.y, this.solidArea.width, this.solidArea.height);
+		}
 		
 	}
 }
