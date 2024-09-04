@@ -25,16 +25,24 @@
 
   <licenses>
     <license>
-      <name>Apache-2.0</name>
-      <url>https://spdx.org/licenses/Apache-2.0.html</url>
+      <name>MIT License</name>
+      <url>https://github.com/mefernandez/rpg-game-in-java?tab=MIT-1-ov-file#readme</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
 
   <developers>
     <developer>
-      <id>duke</id>
-      <name>Java Duke</name>
+      <id>mefernandez</id>
+      <name>Mariano Fernández</name>
+    </developer>
+    <developer>
+      <id>LeoColaCola</id>
+      <name>Leo Fernández</name>
+    </developer>
+    <developer>
+      <id>sfx4Bubble</id>
+      <name>Javier Fernández</name>
     </developer>
   </developers>
 
