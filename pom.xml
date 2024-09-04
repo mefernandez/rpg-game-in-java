@@ -147,7 +147,7 @@
             </project>
             <release>
               <github>
-                <owner>duke</owner>
+                <owner>mefernandez</owner>
                 <overwrite>true</overwrite>
               </github>
             </release>
