@@ -18,7 +18,7 @@ public class Player extends Entity {
 	public final int screenX;
 	public final int screenY;
 	// how many keys the player has
-	int hasKey = 0;
+	public int hasKey = 0;
 	
 	public Player(GamePanel gp, KeyHandler kh) {
 		super();
@@ -129,7 +129,7 @@ public class Player extends Entity {
 				this.hasKey++;
 				// DELETE THE TOUCHED OBJECT
 				gp.obj[i] = null;
-				System.out.println("Keys left: " + this.hasKey);
+				gp.ui.showMessage("You got a key!");
 				break;
 			case "Door":
 				if (this.hasKey > 0) {
@@ -137,7 +137,9 @@ public class Player extends Entity {
 					// DELETE THE TOUCHED OBJECT
 					gp.obj[i] = null;
 					this.hasKey--;
-					System.out.println("Keys left: " + this.hasKey);
+					gp.ui.showMessage("You opened the door!");
+				} else {
+					gp.ui.showMessage("You need a key!");
 				}
 				break;
 			case "Boots":
@@ -145,6 +147,13 @@ public class Player extends Entity {
 				// Move player faster with Boots
 				this.speed += 2;
 				gp.obj[i] = null;
+				gp.ui.showMessage("Speed up!");
+				break;
+			case "Chest":
+				gp.ui.gameFinished = true;
+				gp.stopMusic();
+				gp.playSoundEffect(4);
+				break;
 			}
 		}
 	}

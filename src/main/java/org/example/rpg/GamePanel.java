@@ -46,6 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	Sound music = new Sound();
 	Sound sound = new Sound();
+	public UI ui = new UI(this);
 	
 	public GamePanel() {
 		this.setPreferredSize(new Dimension(screenWidth, screenHeight));
@@ -112,19 +113,23 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 		}
 		
+		// PLAYER
 		player.draw(g2);
+		
+		// UI
+		ui.draw(g2);
 		
 		g2.dispose();
 	}
 	
 	public void playMusic(int i) {
-		this.sound.setFile(i);
-		this.sound.play();
-		this.sound.loop();
+		this.music.setFile(i);
+		this.music.play();
+		this.music.loop();
 	}
 	
 	public void stopMusic() {
-		this.sound.stop();
+		this.music.stop();
 	}
 	
 	public void playSoundEffect(int i) {
