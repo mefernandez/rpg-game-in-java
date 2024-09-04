@@ -17,7 +17,7 @@
     <java.version>1.8</java.version>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <app.main.class>com.acme.Main</app.main.class>
+    <app.main.class>org.example.rpg.Main</app.main.class>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <app.distribution.directory>${project.build.directory}/distributions/app</app.distribution.directory>
